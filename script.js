@@ -35,9 +35,9 @@ clearBtn.addEventListener('click', () => {
             
         }
     }
-            container.style.removeProperty('width')
-            container.style.removeProperty('height');
-            container.style.removeProperty('border');
+    container.style.removeProperty('width')
+    container.style.removeProperty('height');
+    container.style.removeProperty('border');
     return;
 })
 
@@ -74,7 +74,7 @@ colourBtn.addEventListener('click', () => {
 setSizeBtn.addEventListener('click', () => {
 
     let sizePrompt = window.prompt("Max size: 100px, Min size: 2px", 16);
-    console.log(sizePrompt);
+
     if (sizePrompt > 100) {
         alert('Over maximum size')
     } 
