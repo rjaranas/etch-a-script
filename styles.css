@@ -6,6 +6,7 @@ html {
 body {
     display: flex;
     flex-direction: column;
+    background-color: darkslategrey;
 }
 
 #title-container {
@@ -16,6 +17,7 @@ body {
     margin-top: 50px;
     margin-bottom: 60px;
 }
+
 #title-container button {
     width: 70px;
     height: 40px;
@@ -27,12 +29,8 @@ body {
     margin: 0 auto;
     overflow: auto;
     justify-content: center;
-    
+    background-color: white;
 }
 .pixel {
     border: 1px solid black;
-}
-
-#black:hover {
-    background-color: black;;
 }

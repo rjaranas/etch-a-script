@@ -6,12 +6,13 @@ const clearBtn = document.getElementById('clear-button');
 const eraseBtn = document.getElementById('erase-button');
 
 
-const getSize = (n) => {
+const getSize = (n = 16) => {
     container.innerHTML = '';
     let size = Math.floor(800 / n);
     size = Math.min(size, 35);
     container.style.width = `${n * size}px`;
     container.style.height = `${n * size}px`;
+    container.style.border = `2px solid white`
     for (let i = 0; i < n * n; i++) {
         const div = document.createElement('div');
         div.className = 'pixel';
@@ -19,29 +20,59 @@ const getSize = (n) => {
         div.style.height = `${size - 2}px`;
         container.appendChild(div);
     }
+    const pixels = document.querySelectorAll('.pixel')
+    pixels.forEach((el) => {
+        el.addEventListener('mouseover', () => {
+            el.style.backgroundColor = 'black';
+        })
+    })
 }
 
 clearBtn.addEventListener('click', () => {
     if (container.hasChildNodes()) {
         while (container.firstChild) {
             container.firstChild.remove();
+            
         }
     }
+            container.style.removeProperty('width')
+            container.style.removeProperty('height');
+            container.style.removeProperty('border');
     return;
 })
 
 blackBtn.addEventListener('click', () => {
     const pixels = document.querySelectorAll('.pixel')
     pixels.forEach((el) => {
-        el.id = '';
-        el.id = 'black';
         el.addEventListener('mouseover', () => {
             el.style.backgroundColor = 'black';
         })
     })
 })
 
+eraseBtn.addEventListener('click', () => {
+    const pixels = document.querySelectorAll('.pixel')
+    pixels.forEach((el) => {
+        el.addEventListener('mouseover', () => {
+            el.style.backgroundColor = 'white';
+        })
+    })
+})
+
+colourBtn.addEventListener('click', () => {
+    const pixels = document.querySelectorAll('.pixel');
+    pixels.forEach((el) => {
+        const r = Math.floor((Math.random() * 256));
+        const g = Math.floor((Math.random() * 256));
+        const b = Math.floor((Math.random() * 256));
+        el.addEventListener('mouseover', () => {
+            el.style.backgroundColor = `rgb(${r}, ${g}, ${b})`
+        })
+    })
+})
+
 setSizeBtn.addEventListener('click', () => {
+
     let sizePrompt = window.prompt("Max size: 100px, Min size: 2px", 16);
     console.log(sizePrompt);
     if (sizePrompt > 100) {
@@ -57,3 +88,4 @@ setSizeBtn.addEventListener('click', () => {
         getSize(sizePrompt);
     }
 })
+
