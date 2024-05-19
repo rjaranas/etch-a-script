@@ -22,7 +22,10 @@ const getSize = (n = 16) => {
     }
     const pixels = document.querySelectorAll('.pixel')
     pixels.forEach((el) => {
+        el.dataset.opacity = 0;
         el.addEventListener('mouseover', () => {
+            el.dataset.opacity = Math.min(parseFloat(el.dataset.opacity) + 0.1, 1);
+            el.style.opacity = el.dataset.opacity;
             el.style.backgroundColor = 'black';
         })
     })
@@ -44,9 +47,13 @@ clearBtn.addEventListener('click', () => {
 blackBtn.addEventListener('click', () => {
     const pixels = document.querySelectorAll('.pixel')
     pixels.forEach((el) => {
+        el.dataset.opacity = 0;
         el.addEventListener('mouseover', () => {
+            el.dataset.opacity = Math.min(parseFloat(el.dataset.opacity) + 0.1, 1);
+            el.style.opacity = el.dataset.opacity;
             el.style.backgroundColor = 'black';
         })
+     
     })
 })
 
@@ -65,16 +72,20 @@ colourBtn.addEventListener('click', () => {
         const r = Math.floor((Math.random() * 256));
         const g = Math.floor((Math.random() * 256));
         const b = Math.floor((Math.random() * 256));
+        el.dataset.opacity = 0;
         el.addEventListener('mouseover', () => {
+            el.dataset.opacity = Math.min(parseFloat(el.dataset.opacity) + 0.1, 1);
+            el.style.opacity = el.dataset.opacity;
             el.style.backgroundColor = `rgb(${r}, ${g}, ${b})`
+            
+    
+
         })
     })
 })
 
 setSizeBtn.addEventListener('click', () => {
-
     let sizePrompt = window.prompt("Max size: 100px, Min size: 2px", 16);
-
     if (sizePrompt > 100) {
         alert('Over maximum size')
     } 
